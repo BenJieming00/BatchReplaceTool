@@ -1,0 +1,4 @@
+# Windows 版运行/打包依赖
+PySide6>=6.5
+pywin32>=306
+pyinstaller>=6.0
