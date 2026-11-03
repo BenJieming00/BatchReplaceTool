@@ -28,3 +28,17 @@ jobs:
         with:
           name: BatchReplaceTool-windows
           path: dist/*.exe
+
+      - name: Publish Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/*.exe
+          tag_name: v1.0.${{ github.run_number }}
+          name: 批量替换工具 Windows 版 (build #${{ github.run_number }})
+          body: |
+            自动构建产物（Microsoft 引擎 + OOXML 批量替换）
+            - 打包时间：${{ github.event.head_commit.timestamp }}
+            - 提交：${{ github.sha }}
+            下载 exe 后直接双击运行（需 Windows 10/11 + Microsoft Office）
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
